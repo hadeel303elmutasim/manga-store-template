@@ -3,7 +3,6 @@
 A modern, responsive e-commerce storefront template designed for a digital manga retailer. This project is built using native **JavaScript (ES6+)** and **Tailwind CSS**, demonstrating core front-end state management, shopping cart arithmetic, and dynamic user interfaces without external framework dependencies.
 
 ## 🚀 Live Links
-- **Live Demo:** [View Live Site](https://hadeel303elmutasim.github.io/manga-store-template/)
 - **Code Repository:** [GitHub Link](https://github.com)
 
 ## ✨ Core Features
