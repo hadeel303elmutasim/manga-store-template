@@ -1,6 +1,6 @@
 if (!localStorage.getItem("username")) {
     alert("Access Denied. Please login to view this page.");
-    window.location.replace("./login.html"); 
+    window.location.replace("./pages/login.html"); 
 }
 let userInfo = document.querySelector("#user_info")  //ul of th username in the navbar
 let userData = document.querySelector("#user") // the a tag of the username in the navbar
@@ -25,7 +25,7 @@ if (logoutbtn) {
              localStorage.removeItem("username");
              localStorage.removeItem("password");
              localStorage.removeItem("ProductsInCart"); 
-             window.location.replace("./login.html");
+             window.location.replace("./pages/login.html");
         }
     });
 }
