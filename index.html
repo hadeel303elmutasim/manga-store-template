@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manga Store</title>
+
+     <!-- FontAwesome Engine for Icon Nodes -->
+    <link rel="stylesheet" href="https://cloudflare.com">
+
+    <!-- for tailwind and style......... -->
+       <link href="./dist/output.css" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+@keyframes heartbeat {
+    0% { transform: scale(1); }
+    30% { transform: scale(1.4); }
+    60% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+.animate-heartbeat {
+    animation: heartbeat 0.4s ease-in-out;
+}
+</style>
+</head>
+
+<body class="bg-[#FDFBF0] font-serif antialiased">
+
+<header>
+    <!-- Fixed Navigation container with explicit background color values -->
+    <div id="container" class="fixed top-0 left-0 w-full bg-[#3E2723] z-50 border-b border-[#A32424]/30 shadow-lg shadow-gray-900/30">
+        <div id="header_content" class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center flex-wrap">
+            
+            <!-- Logo Home Page Link Layout -->
+            <a href="index.html">
+                <div id="brand" class="flex items-center gap-2">
+                    <span class="text-2xl font-bold text-[#9B2226]">MANGA</span>
+                    <span class="text-xs bg-blue-50 text-[#9B2226] px-2 py-1 rounded-full font-medium hidden sm:block">Store</span>
+                </div>
+            </a>
+
+            <nav id="nav-links" class="w-full lg:flex lg:items-center gap-8 lg:w-auto text-[#FDFBF0] font-medium">
+                <!-- Logged Out View Links Wrapper -->
+                <ul id="links" class="flex flex-row gap-6 lg:gap-8 pt-0 items-center">
+                    <li><a href="./pages/register.html" class="hover:text-[#A32424] transition text-[#FDFBF0] no-underline">Sign Up</a></li>
+                    <li><a href="./pages/login.html" class="hover:text-[#A32424] transition text-[#FDFBF0] no-underline">Sign In</a></li>
+                </ul>
+
+                <!-- Logged In User Navigation Module -->
+                <ul id="user_info" class="hidden text-[#FDFBF0] font-medium items-center gap-6">
+                    <li class="cursor-pointer hover:text-[#A32424] transition">
+                        <a href="index.html" id="products_page" class="text-[#FDFBF0] no-underline flex items-center gap-1.5">
+                            Manga List <i class="fa-solid fa-list text-xs"></i>
+                        </a>
+                    </li>
+
+                    <!-- Shopping Cart Overlay Group Trigger -->
+                    <li id="shopping_cart" class="relative cursor-pointer">
+                        <i id="cart_icon" class="fa-solid fa-cart-shopping text-white text-[25px] hover:text-[#A32424] transition mt-2"></i>
+                        <span id="badge" class=" hidden absolute -top-2 -right-2 w-5 h-5 bg-red-600 text-white text-center text-[10px] leading-5 rounded-full pointer-events-none"></span>
+                        
+                        <!-- Mini Cart Dropdown Panel -->
+                        <div id="carts_products" class="hidden absolute right-0 top-10 w-[210px] bg-[#eaeaea] p-2.5 border border-[#9B2226] z-50 shadow-xl">
+                            <div id="cart_items_list" class="block text-gray-800">
+                                <!-- Products map here dynamically -->
+                                <div id="empty_cart_msg" class="px-4 py-4 text-center text-sm text-gray-500 italic">No items found in the cart</div>
+                            </div>
+
+                            <a href="cartproducts.html" style="background-color: #9B2226 !important; color: #FFFFFF !important; display: block !important;" 
+                                class="my-1 mx-0 p-2 text-center no-underline transition font-bold rounded"
+                                onmouseover="this.style.backgroundColor='#7A1A1D'" 
+                                onmouseout="this.style.backgroundColor='#9B2226'">View Cart</a>
+                        </div>
+                    </li>
+
+                   <!-- // Favorites counter -->
+                    <li id="fav_div" class="relative cursor-pointer">
+                        <i id="fav_icon" class="fa-solid fa-heart text-white text-[25px] hover:text-[#A32424] transition mt-2"></i>
+                        <span id="fav_badge" class=" hidden absolute -top-2 -right-2 w-5 h-5 bg-red-600 text-white text-center text-[10px] leading-5 rounded-full pointer-events-none"></span>
+                        <!-- Mini Favorites Dropdown Panel -->
+                        <div id="favorites_panel" class="hidden absolute right-0 top-10 w-[210px] bg-[#eaeaea] p-2.5 border border-[#9B2226] z-50 shadow-xl">
+                            <div id="favorites_list" class="block text-gray-800">
+                                <!-- Favorite items will be displayed here -->
+                            </div>
+                        </div>  
+                    </li>
+
+                    <!-- Logout option -->
+                    <li class="relative">
+                        <a href="#" id="user" class="text-[#FDFBF0] no-underline hover:text-[#A32424] transition flex items-center gap-1">
+                             <i class="fa-solid fa-chevron-down text-xs ml-0.5"></i>
+                        </a>
+                        
+                         <ul id="user_dropdown" class="hidden absolute left-0 mt-2 w-32 bg-[#eaeaea] border border-[#9B2226] rounded shadow-xl z-50 py-1">
+                            <li class="cursor-pointer transition">
+                                <a href="./pages/login.html" id="logout" class="text-gray-800 hover:text-[#A32424] hover:bg-gray-200 px-3 py-1.5 text-sm no-underline flex items-center gap-1.5 transition">
+                                    Logout <i class="fa-solid fa-right-from-bracket text-xs"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                </ul> 
+            </nav>
+        </div>
+    </div>
+</header>
+
+<main class="pt-32 w-full max-w-[80%] mx-auto px-4 flex flex-col items-center">
+    
+    <!-- Search Field and Filtering Controls Layout Wrap -->
+    <div class="w-full mb-8 flex flex-col sm:flex-row gap-4 justify-between items-center bg-white p-4 rounded-lg shadow-sm border border-gray-200">
+        <div class="relative w-full sm:max-w-xs">
+            <input type="text" id="searchInput" placeholder="Search manga..." class="w-full pl-4 pr-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#9B2226] focus:border-[#9B2226] font-sans">
+        </div>
+        
+        <div class="w-full sm:w-auto">
+            <select id="categoryFilter" class="w-full sm:w-48 px-3 py-2 border border-gray-300 rounded-md bg-white focus:outline-none focus:ring-2 focus:ring-[#9B2226] focus:border-[#9B2226] font-sans">
+                <option value="">All Genre</option>
+                <option value="shonen">Shonen</option>
+                <option value="seinen">Seinen</option>
+                <option value="shojo">Shojo</option> 
+                <option value="thriller">Thriller</option>
+                <option value="seinen">Seinen</option>
+                <option value="sports">Sports</option>
+                <option value="drama">Drama</option>
+                <option value="slice-of-life">Slice of Life</option>
+                <option value="adventure">Adventure</option> 
+                <option value="action">Action</option>
+
+
+            </select>
+        </div>
+    </div>
+
+    <!-- Active dynamic injection point (Enforces strict 3 columns row layout) -->
+    <section class="w-full pb-12">
+        <div id="products" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Dynamic JavaScript records automatically bind here -->
+
+
+        </div>
+    </section>
+</main>
+    <script src="./js/script.js"></script>
+
+</body>
+
+</html>
