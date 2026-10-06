@@ -12,7 +12,7 @@ loginbtn.addEventListener("click" , function (e){
     }else if(getUsername && getUsername.trim() === username.value && getPassword && getPassword.trim() === password.value){
         alert("Login successful")  
          setTimeout(() => {
-            window.location = "./index.html"
+            window.location = "../index.html"
         }, 1500)  
     }else{
         alert("Invalid username or password")
