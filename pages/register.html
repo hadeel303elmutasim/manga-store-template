@@ -1,0 +1,68 @@
+<>
+
+<head>
+    <title>Register Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+    <link rel="stylesheet" href="../dist/output.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body class="bg-[#3d3d3b] font-serif antialiased">
+<header>
+    <div id="container" class="fixed top-0 left-0 w-full bg-[#3E2723] z-50 border-b border-[#A32424]/30 shadow-lg shadow-gray-900/30">
+        <div id="header_content" class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center flex-wrap">
+            <!-- Logo Home page -->
+            <a href="index.html"><div id="brand" class="flex items-center gap-2">
+                 <span class="text-2xl font-bold text-[#9B2226]">MANGA</span>
+                <span class="text-xs bg-blue-50 text-[#9B2226] px-2 py-1 rounded-full font-medium hidden sm:block">Store</span>
+                
+            </div>
+         </a>
+
+            <!--  Hamburger Button (Hidden on LG) -->
+        <!-- <button id="menu-btn" class="lg:hidden text-[#FDFBF0] order-2">
+            <i class="fa-solid fa-bars"></i>
+        </button> -->
+
+            <!-- Nav Links -->
+            <nav id="nav-links" class="hidden w-full lg:flex lg:items-center gap-8 lg:w-auto text-[#FDFBF0] font-medium">
+                <ul id="links" class="flex flex-col lg:flex-row gap-6 lg:gap-8 pt-6 lg:pt-0">
+                <!-- <li><a href="#" class="hover:text-[#A32424] transition">Home</a></li>
+                <li><a href="#" class="hover:text-[#A32424] transition">Menu</a></li>
+                <li><a href="#" class="hover:text-[#A32424] transition">Contact Us</a></li> -->
+
+                <li><a href="register.html" class="list-none hover:text-[#A32424] transition">Sign Up</a></li>
+                <li><a href="login.html" class="list-none hover:text-[#A32424] transition">Sign In</a></li>
+            </ul>
+            </nav>
+            
+            </div>
+        </div>
+</header>
+
+    <!-- Section 1 -->
+    <section id="section_form" class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[45%] text-left bg-[#3E2723] p-5">
+        <!-- <h2 class="text-[50px] tracking-[2px] text-[#9B2226]">Register User</h2> -->
+            <form class="space-y-4">
+                <input class="block w-full h-7.5 border bg-white text-black border-white p-1.25 outline-none" type="text" placeholder="Enter Your username" id="username">
+                <input class="block w-full h-7.5 border bg-white text-black border-white p-1.25 outline-none" type="email" placeholder="Enter Your Email" id="email">
+                <input class="block w-full h-7.5 border bg-white text-black border-white p-1.25 outline-none" type="password" placeholder="Enter Your password" id="password">
+                <div class="text-white">
+            <input type="checkbox" id="remember_me" class="ml-2 accent-orange-700">
+             <label for="remember_me" class="ml-2">Remember Me</label>
+        </div>
+                <input class="block w-full h-7.5 border border-white p-1.25 outline-none bg-white hover:bg-opacity-5 cursor-pointer hover:bg-[#9B2226]"  type="submit" value="Sign Up" id="sign_up">
+                <span class="text-white">
+                    Have an account? <a href="login.html"  class="text-white hover:text-[#9B2226]  hover:underline">Sign In</a>
+                </span>
+            </form>
+    </section>
+    
+</body>
+
+    <script src="../js/register.js"></script>
+
+</html>
