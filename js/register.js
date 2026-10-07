@@ -14,7 +14,7 @@ registerbtn.addEventListener("click" , function (e){
 
         alert("Registration successful")
         setTimeout(() => {
-            window.location = "pages/login.html"
+            window.location = "login.html"
         }, 1500)
     }
 })
