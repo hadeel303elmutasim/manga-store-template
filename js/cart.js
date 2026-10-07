@@ -1,6 +1,6 @@
 if (!localStorage.getItem("username")) {
     alert("Access Denied. Please login to view this page.");
-    window.location.replace("pages/login.html"); // .replace prevents the user from clicking "Back" to return here
+    window.location.replace("./pages/login.html"); // .replace prevents the user from clicking "Back" to return here
 }
 let userInfo = document.querySelector("#user_info")  //ul of th username in the navbar
 let userData = document.querySelector("#user") // the a tag of the username in the navbar
@@ -30,12 +30,19 @@ if (logoutbtn) {
     logoutbtn.addEventListener("click", (e) => {
         e.preventDefault(); // This prevents the browser from instantly following the href="login.html" link before the JavaScript has finished removing the item from storage.
        
-        const confirmLogout = confirm("Are you sure you want to logout?");
+ const confirmLogout = confirm("Are you sure you want to logout?");
         if (confirmLogout) {
              localStorage.removeItem("username");
              localStorage.removeItem("password");
-             localStorage.removeItem("cart"); 
-             window.location.replace("./pages/login.html"); // Redirect to login page after logout
+             localStorage.removeItem("ProductsInCart"); // Match your storage keys correctly
+             localStorage.removeItem("Favorites");
+             
+             // 🌟 FIX: Dynamic redirection based on current directory level
+             if (window.location.pathname.includes("/pages/")) {
+                 window.location.replace("login.html");
+             } else {
+                 window.location.replace("pages/login.html");
+             }
         }
     })
 }
@@ -78,7 +85,11 @@ function drawDropdownCartItems() {
         cartItemsDiv.innerHTML = `<div id="empty_cart_msg" style="padding: 16px; text-align: center; font-size: 14px; color: #6b7280; font-style: italic;">No items found in the cart</div>`;
         return;
     }
-
+let pathPrefix = "";
+    if (window.location.pathname.includes("/pages/")) {
+        // If we are inside cart.html, login.html, etc., we don't need 'pages/' in the redirect path
+        pathPrefix = "../"; 
+    }
     cartItemsDiv.innerHTML = productsInCart.map((chosenitem) => {
         const itemQuantity = chosenitem.quantity || 1;
         const totalRowPrice = (chosenitem.price * itemQuantity).toFixed(2);
@@ -86,10 +97,10 @@ function drawDropdownCartItems() {
         return `
             <div class="cart_item" style="display: flex !important; align-items: center !important; justify-content: space-between !important; border-b: 1px solid #ddd !important; padding: 8px 0 !important; gap: 8px !important; width: 100% !important; box-sizing: border-box !important;">
                 <div style="width: 45px !important; height: 60px !important; min-width: 45px !important; min-height: 60px !important; flex-shrink: 0 !important; overflow: hidden !important; border-radius: 4px !important;">
-                    <img src="${chosenitem.image}" style="width: 100% !important; height: 100% !important; object-fit: cover !important; display: block !important;" alt="${chosenitem.title}">
+                    <img src="${pathPrefix}${chosenitem.image}" style="width: 100% !important; height: 100% !important; object-fit: cover !important; display: block !important;" alt="${chosenitem.title}">
                 </div>
                 <div style="flex: 1 !important; min-width: 0 !important; text-align: left !important; padding: 0 4px !important;">
-                    <h3 style="font-size: 13px -tracking-tighter !important; font-weight: 700 !important; margin: 0 !important; white-space: nowrap !important; overflow: hidden !important; text-overflow: ellipsis !important; color: #1f2937 !important;">${chosenitem.title}</h3>
+                    <h3 style="font-size: 13px !important; font-weight: 700 !important; margin: 0 !important; white-space: nowrap !important; overflow: hidden !important; text-overflow: ellipsis !important; color: #1f2937 !important;">${chosenitem.title}</h3>
                     <span style="font-size: 12px !important; font-weight: 600 !important; color: #9B2226 !important; display: block !important; margin-top: 2px !important;">$${totalRowPrice}</span>
                 </div>
                 <div style="display: flex !important; align-items: center !important; justify-content: center !important; background-color: #ffffff !important; border: 1px solid #d1d5db !important; border-radius: 4px !important; padding: 2px 4px !important; flex-shrink: 0 !important; gap: 6px !important;">
