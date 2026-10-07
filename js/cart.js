@@ -1,6 +1,6 @@
 if (!localStorage.getItem("username")) {
     alert("Access Denied. Please login to view this page.");
-    window.location.replace("./pages/login.html"); // .replace prevents the user from clicking "Back" to return here
+    window.location.replace("pages/login.html"); // .replace prevents the user from clicking "Back" to return here
 }
 let userInfo = document.querySelector("#user_info")  //ul of th username in the navbar
 let userData = document.querySelector("#user") // the a tag of the username in the navbar
